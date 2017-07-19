@@ -3,6 +3,6 @@
 
 def utils = new Utilities(steps)
 
-node {
+node ('jenkins-slave-01'){
   utils.mvn 'clean package'
 }
