@@ -5,6 +5,6 @@ def utils = new Utilities(steps)
 def z = new Zot()
 
 node ('jenkins-slave-01'){
-  z.checkOutFrom('http://git.quarkfinance.com/payday-loan/bizappForNDes.git')
+  z.checkOutFrom('bizappForNDes')
   utils.mvn 'clean package'
 }
