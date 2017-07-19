@@ -1,4 +1,8 @@
 #!/usr/bin/env groovy
-@Library('my-share-library')
-def z = new org.foo.Zot()
-z.ckeckOutFrom('kevinguo.me')
+@Library('my-share-library') import org.foo.Utilities
+
+def utils = new Utilities(steps)
+
+node {
+  utils.mvn 'clean package'
+}
