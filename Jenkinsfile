@@ -4,9 +4,9 @@
 import static org.foo.Utilities.*
 // // def utils = new Utilities(steps)
 // def z = new Zot()
+def acme = new Acme(this)
 
 node ('jenkins-slave-01'){
-  def acme = new Acme(this)
   acme.name='Alice'
   // echo acme.name
   acme.caution('The queen is angry!')
