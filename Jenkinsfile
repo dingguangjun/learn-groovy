@@ -6,7 +6,7 @@ import static org.foo.Utilities.*
 // def z = new Zot()
 
 node ('jenkins-slave-01'){
-  def acme = new acme()
+  def acme = new Acme(this)
   acme.name='Alice'
   // echo acme.name
   acme.caution('The queen is angry!')
