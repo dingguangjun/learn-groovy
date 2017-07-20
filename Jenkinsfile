@@ -1,7 +1,7 @@
 #!/usr/bin/env groovy
 @Library('my-share-library')
 // import org.foo.Zot
-import static org.foo.Acme
+import org.foo.Acme
 // // def utils = new Utilities(steps)
 // def z = new Zot()
 def acme = new Acme(this)
