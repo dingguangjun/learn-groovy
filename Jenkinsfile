@@ -7,5 +7,6 @@ def z = new Zot()
 
 node ('jenkins-slave-01'){
   z.checkOutFrom('http://git.quarkfinance.com/payday-loan/bizappForNDes.git')
-  utils.mvn 'clean package'
+  // utils.mvn 'clean package'
+  mvn this, 'clean package'
 }
