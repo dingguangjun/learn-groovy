@@ -6,8 +6,8 @@ import static org.foo.Utilities.*
 def z = new Zot()
 
 node ('jenkins-slave-01'){
-  acme.name='Alice'
-  echo acme.name
+  acme.setName='Alice'
+  echo acme.getName
   acme.caution 'The queen is angry!'
   z.checkOutFrom('http://git.quarkfinance.com/payday-loan/bizappForNDes.git')
   // utils.mvn 'clean package'
