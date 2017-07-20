@@ -9,11 +9,13 @@ pipeline{
   agent any
   stages {
     stage ('test') {
-      steps echo "hello"
-      script {
-        acme.name = 'Alice'
-        echo acme.name
-        acme.caution 'The queen is angry!'
+      steps {
+        echo "hello"
+        script {
+          acme.name = 'Alice'
+          echo acme.name
+          acme.caution 'The queen is angry!'
+        }
       }
     }
   }
