@@ -1,5 +1,5 @@
 #!/usr/bin/env groovy
-@Library('my-share-library') _
+@Library('my-share-library')
 // import org.foo.Zot
 // import static org.foo.Utilities.*
 // // def utils = new Utilities(steps)
