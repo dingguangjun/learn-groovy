@@ -16,4 +16,6 @@ node ('jenkins-slave-01'){
   sayHello.setName('zhangsan')
   echo sayHello.getName()
   sayHello.caution('hello is angry!')
+  sayHello.name = 'lisi'
+  echo sayHello.name
 }
