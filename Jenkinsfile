@@ -5,6 +5,7 @@ import org.foo.Acme
 // // def utils = new Utilities(steps)
 // def z = new Zot()
 def acme = new Acme(this)
+def test = new Test(this)
 
 node ('jenkins-slave-01'){
   acme.name='Alice'
@@ -19,7 +20,7 @@ node ('jenkins-slave-01'){
   // sayHello.name = 'lisi'
   // echo sayHello.name
   // sayHello.caution('hello is angry!')
-  Test.name = 'zhangsan'
-  echo Test.name
-  Test.caution 'NIMABI'
+  test.name = 'zhangsan'
+  echo test.name
+  test.caution 'NIMABI'
 }
