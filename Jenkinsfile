@@ -25,9 +25,5 @@
 //   test.caution 'NIMABI'
 // }
 pipeline {
-  agent {
-    dockerfile true
-    label 'my-define-label'
-    args '-v /tmp:/tmp'
-  }
+  agent { dockerfile true }
 }
