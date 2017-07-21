@@ -23,12 +23,11 @@
 //   test.name = 'zhangsan'
 //   echo test.name
 //   test.caution 'NIMABI'
-
+// }
 pipeline {
   agent {
     dockerfile true
     label 'my-define-label'
     args '-v /tmp:/tmp'
   }
-}
 }
