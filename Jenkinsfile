@@ -18,6 +18,5 @@ node ('jenkins-slave-01'){
   sayHello.caution('hello is angry!')
   sayHello.name = 'lisi'
   echo sayHello.name
-  sayHello.phone = '123'
-  echo sayHello.phone
+  sayHello.caution('hello is angry!')
 }
