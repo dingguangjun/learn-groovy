@@ -13,10 +13,13 @@ node ('jenkins-slave-01'){
   // z.checkOutFrom('http://git.quarkfinance.com/payday-loan/bizappForNDes.git')
   // utils.mvn 'clean package'
   // mvn this, 'clean package'
-  sayHello.setName('zhangsan')
-  echo sayHello.getName()
-  sayHello.caution('hello is angry!')
-  sayHello.name = 'lisi'
-  echo sayHello.name
-  sayHello.caution('hello is angry!')
+  // sayHello.setName('zhangsan')
+  // echo sayHello.getName()
+  // sayHello.caution('hello is angry!')
+  // sayHello.name = 'lisi'
+  // echo sayHello.name
+  // sayHello.caution('hello is angry!')
+  Test.name = 'zhangsan'
+  echo Test.name
+  Test.caution 'NIMABI'
 }
