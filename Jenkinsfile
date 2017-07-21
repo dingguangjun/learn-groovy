@@ -10,7 +10,7 @@ pipeline {
   stages {
     stage('example build') {
       steps {
-        echo 'Hello'
+        sh "ls"
       }
     }
   }
