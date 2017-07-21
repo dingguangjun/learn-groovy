@@ -5,7 +5,7 @@ import org.foo.Acme
 // // def utils = new Utilities(steps)
 // def z = new Zot()
 def acme = new Acme(this)
-def test = new Test(this)
+def test = new Test()
 
 node ('jenkins-slave-01'){
   acme.name='Alice'
