@@ -5,7 +5,7 @@ pipeline {
   stages {
     stage('example build') {
       steps {
-        sh 'echo Hello'
+        sh "echo Hello"
       }
     }
   }
