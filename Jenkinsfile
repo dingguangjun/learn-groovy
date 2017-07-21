@@ -14,5 +14,6 @@ node ('jenkins-slave-01'){
   // utils.mvn 'clean package'
   // mvn this, 'clean package'
   sayHello.setName('zhangsan')
-  echo sayHello.phone
+  echo sayHello.getName
+  sayHello.caution('hello is angry!')
 }
