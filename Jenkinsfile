@@ -3,7 +3,6 @@
 pipeline {
   agent {
     dockerfile  {
-      label 'my-define-docker'
       args '-v /tmp:/tmp'
       additionalBuildArgs '-t alpine:3.6'
     }
