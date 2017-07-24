@@ -2,8 +2,6 @@
 @Library('my-share-library') _
 node {
   stage('First stage') {
-    dockerFingerprintFrom {
-      dockerfile
-    }
+    dockerFingerprintFrom([dockerfile: "."])
   }
 }
