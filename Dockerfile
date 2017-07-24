@@ -8,4 +8,6 @@ RUN apk upgrade --no-cache \
     && apk add --no-cache bash tzdata \
     && ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && echo "Asia/Shanghai" > /etc/timezone \
-    && rm -rf /var/cache/apk/*
+    && rm -rf /var/cache/apk/* \
+    && useradd -u 1000 -g 1000 jenkins
+USER jenkins
