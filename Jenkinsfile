@@ -3,14 +3,14 @@
 pipeline {
   agent {
     dockerfile  {
-      args '-v /tmp:/tmp'
-      additionalBuildArgs '-t alpine:3.6'
+      args "-v /tmp:/tmp"
+      label "docker-nodes"
     }
   }
   stages {
     stage('example build') {
       steps {
-        sh "ls"
+        echo "Hello,my World!"
       }
     }
   }
