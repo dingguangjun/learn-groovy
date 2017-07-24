@@ -4,7 +4,6 @@ pipeline {
   agent {
     dockerfile  {
       args "-v /tmp:/tmp"
-      label "docker-nodes"
     }
   }
   stages {
