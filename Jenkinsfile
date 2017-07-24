@@ -3,7 +3,7 @@
 node {
   stage('First stage') {
     dockerFingerprintFrom {
-      dockerfile Dockerfile
+      dockerfile .
     }
   }
 }
