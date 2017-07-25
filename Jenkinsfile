@@ -13,7 +13,5 @@
 // }
 
 dockerNode(image: "docker.io/centos:7.3.1611"){
-  stage('dockerNode') {
     echo "dockerNode"
-  }
 }
