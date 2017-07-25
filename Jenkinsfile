@@ -1,10 +1,10 @@
 #!/usr/bin/env groovy
 @Library('my-share-library') _
 node {
-  dockerNode(image: "docker.io/centos:7.3.1611") {
-    echo "hello"
-  }
   stage('test') {
+    dockerNode(image: "docker.io/centos:7.3.1611"){
+      echo "dockerNode"
+    }
     echo "hhhhh"
   }
   stage('First stage') {
