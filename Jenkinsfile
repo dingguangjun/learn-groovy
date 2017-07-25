@@ -2,9 +2,9 @@
 @Library('my-share-library') _
 node {
   stage('First stage') {
-    dockerFingerprintFrom(dockerfile: "Dockerfile",image: "alpine:3.6")
+    dockerFingerprintFrom(dockerfile: "Dockerfile",image: "172.30.33.31:5000/base/tomcat:8.5.15-8u74")
     }
   stage('Second stage') {
-    dockerFingerprintRun(containerId: "ddc6e5a29f93")
+    dockerFingerprintRun(containerId: "51a044045b31")
   }
 }
