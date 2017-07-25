@@ -2,8 +2,6 @@
 @Library('my-share-library') _
 node {
   stage('First stage') {
-    dockerFingerprintFrom(image: "7.3.1611") {
-      echo "hello ,haha"
-    }
+    dockerFingerprintFrom(image: "docker.io/centos:7.3.1611")
     }
 }
