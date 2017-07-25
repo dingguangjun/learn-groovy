@@ -2,6 +2,8 @@
 @Library('my-share-library') _
 node {
   stage('First stage') {
-    dockerFingerprintFrom([image: "78283aeab666"])
-  }
+    withDockerContainer(image: "docker.io/centos:7.3.1611") {
+      sh "echo hello world!"
+    }
+    }
 }
