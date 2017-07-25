@@ -1,6 +1,11 @@
 #!/usr/bin/env groovy
 @Library('my-share-library') _
 node {
+  dockerNode(image: "docker.io/centos:7.3.1611") {
+    stage('enheng') {
+      echo "nimabi"
+    }
+  }
   stage('test') {
     echo "hhhhh"
   }
