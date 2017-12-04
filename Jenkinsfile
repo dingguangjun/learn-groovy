@@ -1,6 +1,5 @@
 #!/usr/bin/env groovy
-@Library('my-share-library') _
-podTemplate(label: 'mypod',containers: [
+podTemplate(cloud: 'kubernetes',label: 'mypod',containers: [
     containerTemplate(name: 'docker', image: 'docker' , ttyEnabled: true, command: 'cat'),
     ],
     volumes : [
