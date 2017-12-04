@@ -1,6 +1,6 @@
 #!/usr/bin/env groovy
 podTemplate(cloud: 'kubernetes',label: 'mypod',containers: [
-    containerTemplate(name: 'docker', image: 'docker' , ttyEnabled: true, command: 'cat'),
+    containerTemplate(name: 'docker', image: 'docker' , ttyEnabled: true, command: 'cat')
     ],
     volumes : [
         hostPathVolume(mountPath: '/var/run/docker.sock', hostPath: '/var/run/docker.sock'),
@@ -10,4 +10,4 @@ podTemplate(cloud: 'kubernetes',label: 'mypod',containers: [
                 sh 'echo hello world'
             }
         }
-    }
+}
