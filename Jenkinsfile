@@ -1,7 +1,8 @@
 #!/usr/bin/env groovy
 podTemplate(cloud: 'kubernetes-test',label: 'mypod',containers: [
     containerTemplate(name: 'jnlp', image: 'harbor.quark.com/quark/jnlp-slave:alpine',workingDir: '/home/jenkins'),
-    containerTemplate(name: 'docker', image: 'harbor.quark.com/quark/docker' , ttyEnabled: true, command: 'cat')
+    containerTemplate(name: 'docker', image: 'harbor.quark.com/quark/docker' , ttyEnabled: true, command: 'cat'),
+    containerTemplate(name: 'kubectl', image: 'harbor.quark.com/quark/k8s-kubectl:v1.8.4', command: 'cat', ttyEnabled: true)
     ],
     volumes : [
         hostPathVolume(mountPath: '/var/run/docker.sock', hostPath: '/var/run/docker.sock'),
@@ -9,7 +10,25 @@ podTemplate(cloud: 'kubernetes-test',label: 'mypod',containers: [
         node ('mypod') {
             stage('do some Docker worrk') {
               container('docker') {
-                println 'hello world'
+
+                withCredentials(
+                  [[$class: 'UsernamePasswordMultiBinding',
+                    credentialsId: 'habor',
+                    usernameVariable: 'HARBOR_USER',
+                    passwordVariable: 'HARBOR_PASSWORD'
+                  ]]) {
+                    sh """
+                    docker pull ubuntu
+                    docker tag ubuntu harbor.quark.com/quark/ubuntu:${env.BUILD_NUMBER}
+                       """
+                    sh "docker login -u ${env.HARBOR_USER} -p ${env.HARBOR.PASSWORD}"
+                    sh "docker push harbor.quark.com/ubuntu:${env.BUILD_NUMBER}"
+                  }
+              }
+            }
+            stage('do some kubectl work') {
+              container('kubectl') {
+                sh "kubectl get nodes"
               }
             }
         }
