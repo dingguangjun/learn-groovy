@@ -21,7 +21,7 @@ podTemplate(cloud: 'kubernetes-test',label: 'mypod',containers: [
                     docker pull ubuntu
                     docker tag ubuntu harbor.quark.com/quark/ubuntu:${env.BUILD_NUMBER}
                        """
-                    sh "docker login -u ${env.HARBOR_USER} -p ${env.HARBOR.PASSWORD}"
+                    sh "docker login -u ${env.HARBOR_USER} -p ${env.HARBOR_PASSWORD}"
                     sh "docker push harbor.quark.com/ubuntu:${env.BUILD_NUMBER}"
                   }
               }
