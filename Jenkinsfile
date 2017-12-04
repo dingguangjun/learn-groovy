@@ -22,7 +22,7 @@ podTemplate(cloud: 'kubernetes-test',label: 'mypod',containers: [
                     docker tag ubuntu harbor.quark.com/quark/ubuntu:${env.BUILD_NUMBER}
                        """
                     sh "docker login harbor.quark.com -u ${env.HARBOR_USER} -p ${env.HARBOR_PASSWORD}"
-                    sh "docker push harbor.quark.com/quark/ubuntu:${env.BUILD_NUMBER}"
+                    // sh "docker push harbor.quark.com/quark/ubuntu:${env.BUILD_NUMBER}"
                   }
               }
             }
