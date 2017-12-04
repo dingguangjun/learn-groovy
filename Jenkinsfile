@@ -8,7 +8,9 @@ podTemplate(cloud: 'kubernetes-test',label: 'mypod',containers: [
         ]) {
         node ('mypod') {
             stage('do some Docker worrk') {
-                sh 'echo hello world'
+              container('docker') {
+                println 'hello world'
+              }
             }
         }
 }
