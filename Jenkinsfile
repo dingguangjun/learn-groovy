@@ -1,5 +1,5 @@
 #!/usr/bin/env groovy
-podTemplate(cloud: 'kubernetes',label: 'mypod',containers: [
+podTemplate(cloud: 'kubernetes-test',label: 'mypod',containers: [
     containerTemplate(name: 'docker', image: 'docker' , ttyEnabled: true, command: 'cat')
     ],
     volumes : [
