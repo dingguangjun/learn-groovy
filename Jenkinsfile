@@ -28,6 +28,7 @@ podTemplate(cloud: 'kubernetes-test',label: 'mypod',containers: [
             }
             stage('do some kubectl work') {
               container('kubectl') {
+                withCredentials(
                 [[$class: 'UsernamePasswordMultiBinding',
                   credentialsId: 'aafa2b67-5f80-4441-97d1-76cf7dd4739d'
                 ]]) {
