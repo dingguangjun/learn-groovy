@@ -13,7 +13,7 @@ podTemplate(cloud: 'kubernetes-test',label: 'mypod',containers: [
 
                 withCredentials(
                   [[$class: 'UsernamePasswordMultiBinding',
-                    credentialsId: 'habor',
+                    credentialsId: 'harbor',
                     usernameVariable: 'HARBOR_USER',
                     passwordVariable: 'HARBOR_PASSWORD'
                   ]]) {
