@@ -30,7 +30,7 @@ podTemplate(cloud: 'kubernetes-test',label: 'mypod',containers: [
               container('kubectl') {
                 withCredentials(
                 [[$class: 'DockerServerCredentialsBinding',
-                  credentialsId: 'aafa2b67-5f80-4441-97d1-76cf7dd4739d'
+                  credentialsId: 'test'
                 ]]) {
                   sh "kubectl get nodes"
                 }
