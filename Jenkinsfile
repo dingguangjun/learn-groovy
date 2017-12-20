@@ -14,7 +14,7 @@ podTemplate(cloud: 'kubernetes-test',label: 'mypod',containers: [
           checkout scm
             def config = readYaml file: 'Jenkinsfile.yaml'
             stage('do some Docker worrk') {
-              container('jnlp') {
+              container('maven') {
                 dir(config.git.gitlocal){
                   checkout([$class: 'GitSCM',
                   branches: [[name: config.git.gitbranch]],
