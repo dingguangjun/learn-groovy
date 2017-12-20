@@ -29,7 +29,7 @@ podTemplate(cloud: 'kubernetes-test',label: 'mypod',containers: [
             stage('do some kubectl work') {
               container('kubectl') {
                   sh "echo hello kubectl"
-                  sh "kubectl --help"
+                  sh "kubectl get pods"
               }
             }
         }
