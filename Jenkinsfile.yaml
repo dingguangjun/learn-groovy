@@ -24,7 +24,7 @@ git:
   gitrepo: "http://172.30.33.32/contract-mgt/ContractMgt.git"
   gitcredentialsid: "c9baf728-2463-4d59-8643-2181a681fdd4"
   #gitbranch: "refs/tags/20171215"
-  gitbranch: "refs/tags/*/20171215"
+  gitbranch: "refs/tags/*/master"
   gitlocal: "ContractMgt"
 args:
   dockeroptions: "--add-host qf-javadev-01:172.16.1.39 -v /data/maven_repo:/home/qkuser/.m2"
