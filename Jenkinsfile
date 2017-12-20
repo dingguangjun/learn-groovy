@@ -8,7 +8,8 @@ podTemplate(cloud: 'kubernetes-test',label: 'mypod',containers: [
     volumes : [
         [$class: 'HostPathVolume', mountPath: '/var/run/docker.sock', hostPath: '/var/run/docker.sock'],
         [$class: 'HostPathVolume', mountPath: '/home/jenkins', hostPath: '/data/jenkins'],
-        [$class: 'PersistentVolumeClaim', mountPath: '/home/qkuser/.m2', claimName: 'jenkins-m2-pvc', readOnly: false]
+        [$class: 'HostPathVolume', mountPath: '/home/qkuser/.m2', hostPath: '/data/maven_repo']
+        // [$class: 'PersistentVolumeClaim', mountPath: '/home/qkuser/.m2', claimName: 'jenkins-m2-pvc', readOnly: false]
         ]) {
         node ('mypod') {
 
