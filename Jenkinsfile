@@ -7,7 +7,7 @@ podTemplate(cloud: 'kubernetes-test',label: 'mypod',containers: [
     ],
     volumes : [
         [$class: 'HostPathVolume', mountPath: '/var/run/docker.sock', hostPath: '/var/run/docker.sock'],
-        [$class: 'PersistentVolumeClaim', mountPath: '/home/jenkins', claimName: 'jenkins-slave-pvc',readOnly: false],
+        [$class: 'HostPathVolume', mountPath: '/home/jenkins', hostPath: '/data/jenkins'],
         [$class: 'PersistentVolumeClaim', mountPath: '/home/qkuser/.m2', claimName: 'jenkins-m2-pvc', readOnly: false]
         ]) {
         node ('mypod') {
