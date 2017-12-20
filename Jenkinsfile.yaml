@@ -21,7 +21,7 @@ app:
   -XX:PermSize=512m \
   -XX:MaxPermSize=768m'"
 git:
-  gitrepo: "http://git.quarkfinance.com/contract-mgt/ContractMgt.git"
+  gitrepo: "http://172.30.33.32/contract-mgt/ContractMgt.git"
   gitcredentialsid: "4bc74bb9-241d-4745-a841-61629d03ae9f"
   #gitbranch: "refs/tags/20171215"
   gitbranch: "refs/tags/*/20171215"
