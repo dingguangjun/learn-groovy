@@ -14,7 +14,7 @@ podTemplate(cloud: 'kubernetes-test',label: 'mypod',containers: [
 
           checkout scm
             def config = readYaml file: 'Jenkinsfile.yaml'
-            stage('do some Docker worrk') {
+            stage('checkout scm') {
               container('maven') {
                 dir(config.git.gitlocal){
                   checkout([$class: 'GitSCM',
@@ -24,8 +24,11 @@ podTemplate(cloud: 'kubernetes-test',label: 'mypod',containers: [
                   submoduleCfg: [],
                   userRemoteConfigs: [[credentialsId: config.git.gitcredentialsid,url: config.git.gitrepo]]])
                   }
-
-                  mvnPackage(config.args.mavenoptions)
+              }
+            }
+            stage('build artifics') {
+              container('maven') {
+                mvnPackage(config.args.mavenoptions)
               }
             }
         }
