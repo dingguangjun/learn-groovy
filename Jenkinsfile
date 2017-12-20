@@ -28,13 +28,7 @@ podTemplate(cloud: 'kubernetes-test',label: 'mypod',containers: [
             }
             stage('do some kubectl work') {
               container('kubectl') {
-                withCredentials(
-                [[$class: 'DockerServerCredentialsBinding',
-                  credentialsId: 'test'
-                ]]) {
                   sh "kubectl get nodes"
-                }
-
               }
             }
         }
