@@ -1,35 +1,29 @@
 #!/usr/bin/env groovy
+@Library('github.com/chinakevinguo/sharelibrary@master') _
+def pipeline = new org.homework.Pipeline()
 podTemplate(cloud: 'kubernetes-test',label: 'mypod',containers: [
     containerTemplate(name: 'jnlp', image: 'harbor.quark.com/quark/jnlp-slave:alpine',workingDir: '/home/jenkins'),
-    containerTemplate(name: 'docker', image: 'harbor.quark.com/quark/docker' , ttyEnabled: true, command: 'cat'),
-    containerTemplate(name: 'kubectl', image: 'harbor.quark.com/quark/k8s-kubectl:v1.8.4', command: 'cat', ttyEnabled: true)
+    containerTemplate(name: 'maven', image: 'harbor.quark.com/quark/maven:3.5.0-8u74' , ttyEnabled: true, command: 'cat')
     ],
     volumes : [
         hostPathVolume(mountPath: '/var/run/docker.sock', hostPath: '/var/run/docker.sock'),
         ]) {
         node ('mypod') {
-            stage('do some Docker worrk') {
-              container('docker') {
 
-                withCredentials(
-                  [[$class: 'UsernamePasswordMultiBinding',
-                    credentialsId: 'harbor',
-                    usernameVariable: 'HARBOR_USER',
-                    passwordVariable: 'HARBOR_PASSWORD'
-                  ]]) {
-                    sh """
-                    docker pull ubuntu
-                    docker tag ubuntu harbor.quark.com/quark/ubuntu:${env.BUILD_NUMBER}
-                       """
-                    sh "docker login harbor.quark.com -u ${env.HARBOR_USER} -p ${env.HARBOR_PASSWORD}"
-                    // sh "docker push harbor.quark.com/quark/ubuntu:${env.BUILD_NUMBER}"
+          checkout scm
+            def config = readYaml file: 'Jenkinsfile.yaml'
+            stage('do some Docker worrk') {
+              container('maven') {
+                dir(config.git.gitlocal){
+                  checkout([$class: 'GitSCM',
+                  branches: [[name: config.git.gitbranch]],
+                  doGenerateSubmoduleConfigurations: false,
+                  extensions: [],
+                  submoduleCfg: [],
+                  userRemoteConfigs: [[credentialsId: config.git.gitcredentialsid,url: config.git.gitrepo]]])
                   }
-              }
-            }
-            stage('do some kubectl work') {
-              container('kubectl') {
-                  sh "echo hello kubectl"
-                  sh "kubectl get pods"
+
+                  mvnPackage(config.args.mavenoptions)
               }
             }
         }

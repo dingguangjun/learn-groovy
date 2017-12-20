@@ -1,0 +1,36 @@
+images:
+  maven: "172.30.33.31:5000/service/maven:3.5.0-8u74"
+  app: "192.168.56.91:5000/homework-service:latest"
+app:
+  dockerfile: "./"
+  dockerhosts: "192.168.56.91"
+  containername: "contractmgt"
+  # all other docker param specify here
+  dockeroptions: "\
+  -p 9001:8080 \
+  -e LOG_HOME=/opt/jarapp/logs \
+  -v /opt/logs/:/AppLogs \
+  -e LOG_HOME=/opt/tomcat/logs \
+  -e etcdClusterIp=172.30.33.31 \
+  -e appCfgs= \
+  -e JAVA_OPTS='\
+  -server \
+  -Xms128m \
+  -Xmx128m \
+  -Xss512k \
+  -XX:PermSize=512m \
+  -XX:MaxPermSize=768m'"
+git:
+  gitrepo: "http://git.quarkfinance.com/contract-mgt/ContractMgt.git"
+  gitcredentialsid: "4bc74bb9-241d-4745-a841-61629d03ae9f"
+  #gitbranch: "refs/tags/20171215"
+  gitbranch: "refs/tags/*/20171215"
+  gitlocal: "ContractMgt"
+args:
+  dockeroptions: "--add-host qf-javadev-01:172.16.1.39 -v /data/maven_repo:/home/qkuser/.m2"
+  mavenoptions: "-f ContractMgt/pom.xml clean install -Dmaven.test.skip=true"
+email:
+  subject:
+  attachLog:
+  attachmentsPattern:
+  emailRecipients: "chinakevinguo@live.com"
