@@ -28,7 +28,7 @@ podTemplate(cloud: 'kubernetes-test',label: 'mypod',containers: [
             }
             stage('do some kubectl work') {
               container('kubectl') {
-                  sh "kubectl get nodes"
+                  sh "kubectl get pods"
               }
             }
         }
