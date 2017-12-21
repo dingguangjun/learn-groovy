@@ -29,6 +29,7 @@ podTemplate(cloud: 'kubernetes-test',label: 'mypod',containers: [
             }
             stage('build artifics') {
               container('maven') {
+                sleep 100
                 mvnPackage(config.args.mavenoptions)
               }
             }
