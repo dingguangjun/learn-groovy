@@ -9,7 +9,7 @@ podTemplate(cloud: 'kubernetes-test',label: 'mypod',containers: [
         [$class: 'HostPathVolume', mountPath: '/var/run/docker.sock', hostPath: '/var/run/docker.sock'],
         [$class: 'HostPathVolume', mountPath: '/home/jenkins', hostPath: '/data/jenkins'],
         // [$class: 'HostPathVolume', mountPath: '/home/qkuser/.m2', hostPath: '/data/maven_repo']
-        [$class: 'PersistentVolumeClaim', mountPath: '/home/qkuser/.m2', claimName: 'jenkins-m2-pvc', readOnly: false]
+        [$class: 'PersistentVolumeClaim', mountPath: '/home/qkuser', claimName: 'jenkins-m2-pvc', readOnly: false]
         ]) {
         node ('mypod') {
 
