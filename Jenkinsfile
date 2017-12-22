@@ -2,7 +2,7 @@
 @Library('github.com/chinakevinguo/sharelibrary@master') _
 def pipeline = new org.homework.Pipeline()
 podTemplate(cloud: 'kubernetes',label: 'mypod',containers: [
-    containerTemplate(name: 'jnlp', image: 'harbor.quark.com/quark/jnlp-slave:latest',workingDir: '/var/jenkins_home',privileged: true),
+    containerTemplate(name: 'jnlp', image: 'harbor.quark.com/quark/jnlp-slave:alpine',workingDir: '/var/jenkins_home',privileged: true),
     containerTemplate(name: 'maven', image: 'harbor.quark.com/quark/maven:3.5-jdk-8' , ttyEnabled: true, command: 'cat',privileged: true)
     ],
     volumes : [
