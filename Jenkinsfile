@@ -2,8 +2,9 @@
 @Library('github.com/chinakevinguo/sharelibrary@master') _
 def pipeline = new org.homework.Pipeline()
 podTemplate(cloud: 'kubernetes',label: 'mypod',containers: [
-    containerTemplate(name: 'jnlp', image: 'harbor.quark.com/quark/jnlp-slave:alpine',workingDir: '/home/jenkins',privileged: true),
-    containerTemplate(name: 'maven', image: 'harbor.quark.com/quark/maven:3.5.0-8u74' , ttyEnabled: true, command: 'cat',privileged: true)
+    containerTemplate(name: 'jnlp', image: 'harbor.quark.com/quark/jnlp-slave:alpine',workingDir: '/home/jenkins'),
+    containerTemplate(name: 'maven', image: 'harbor.quark.com/quark/maven:3.5.0-8u74',ttyEnabled: true,command: 'cat'),
+    containerTemplate(name: 'docker', image: 'harbor.quark.com/quark/docker:1.12.6',ttyEnabled: true,command: 'cat')
     ],
     volumes : [
         [$class: 'HostPathVolume', mountPath: '/var/run/docker.sock', hostPath: '/var/run/docker.sock'],
@@ -28,6 +29,22 @@ podTemplate(cloud: 'kubernetes',label: 'mypod',containers: [
             stage('build artifics') {
               container('maven') {
                 mvnPackage(config.args.mavenoptions)
+              }
+            }
+
+            stage('build image') {
+              container('docker') {
+                withCredentials(
+                  [[$class: 'UsernamePasswordMultiBinding',
+                  credentialsId: 'harbor',
+                  usernameVariable: 'HARBOR_USER',
+                  passwordVariable: 'HARBOR_PASSWORD'
+                  ]]) {
+                    sh "docker login -u harbor.quark.com ${env.HARBOR_USER} -p ${env.HARBOR_PASSWORD}"
+                    sh (script: "docker build -t ${config.images.app} ${config.app.dockerfile}",returnStdout: true)
+                    sh (script: "docker push ${config.images.app}",returnStdout: true)
+                    sh (script: "docker rmi ${config.images.app}",returnStdout: true)
+                  }
               }
             }
         }

@@ -1,6 +1,8 @@
 images:
-  maven: "172.30.33.31:5000/service/maven:3.5.0-8u74"
-  app: "192.168.56.91:5000/homework-service:latest"
+  jnlp: "harbor.quark.com/quark/jnlp-slave:alpine"
+  maven: "harbor.quark.com/quark/maven:3.5.0-8u74"
+  docker: "harbor.quark.com/quark/docker:1.12.6"
+  app: "harbor.quark.com/quark/contract:v1"
 app:
   dockerfile: "./"
   dockerhosts: "192.168.56.91"
