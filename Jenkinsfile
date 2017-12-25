@@ -25,15 +25,13 @@ podTemplate(cloud: 'kubernetes',label: 'mypod',containers: [
                   submoduleCfg: [],
                   userRemoteConfigs: [[credentialsId: config.git.gitcredentialsid,url: config.git.gitrepo]]])
                   }
-
-                  mvnPackage(config.args.mavenoptions)
               }
             }
-            // stage('build artifics') {
-            //   container('maven') {
-            //     sleep 120
-            //
-            //   }
-            // }
+            stage('build artifics') {
+              container('maven') {
+                sleep 120
+            mvnPackage(config.args.mavenoptions)
+              }
+            }
         }
 }
