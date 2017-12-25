@@ -7,8 +7,6 @@ podTemplate(cloud: 'kubernetes',label: 'mypod',containers: [
     ],
     volumes : [
         [$class: 'HostPathVolume', mountPath: '/var/run/docker.sock', hostPath: '/var/run/docker.sock'],
-        // [$class: 'HostPathVolume', mountPath: '/home/jenkins', hostPath: '/data/jenkins'],
-        // [$class: 'HostPathVolume', mountPath: '/root/.m2', hostPath: '/data/maven_repo']
         [$class: 'PersistentVolumeClaim', mountPath: '/root/.m2', claimName: 'jenkins-m2-pvc', readOnly: false]
         ]) {
         node ('mypod') {
