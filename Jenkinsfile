@@ -51,7 +51,7 @@ podTemplate(cloud: 'kubernetes',label: 'mypod',containers: [
 
             stage('deploy to k8s') {
               container('kubectl') {
-                sleep 300
+                sh (script: "kubectl get pods",returnStdout: true)
               }
             }
         }
