@@ -51,7 +51,9 @@ podTemplate(cloud: 'kubernetes',label: 'mypod',containers: [
 
             stage('deploy to k8s') {
               container('kubectl') {
-                sh (script: "kubectl get pods",returnStdout: true)
+                sh "kubectl get pods"
+                sh "kubectl get nodes"
+                sh "kubectl get pods -o wide"
               }
             }
         }
