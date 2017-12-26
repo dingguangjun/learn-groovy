@@ -1,7 +1,7 @@
 #!/usr/bin/env groovy
 @Library('github.com/chinakevinguo/sharelibrary@master') _
 def pipeline = new org.homework.Pipeline()
-podTemplate(cloud: 'kubernetes',label: 'mypod',namespace: 'kube-system',containers: [
+podTemplate(cloud: 'kubernetes',label: 'mypod',namespace: 'jenkins',containers: [
     containerTemplate(name: 'jnlp', image: 'harbor.quark.com/quark/jnlp-slave:alpine', workingDir: '/home/jenkins'),
     containerTemplate(name: 'maven', image: 'harbor.quark.com/quark/maven:3.5.0-8u74', ttyEnabled: true, command: 'cat'),
     containerTemplate(name: 'docker', image: 'harbor.quark.com/quark/docker:1.12.6', ttyEnabled: true, command: 'cat'),
