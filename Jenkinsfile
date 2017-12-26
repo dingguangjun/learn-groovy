@@ -42,9 +42,9 @@ podTemplate(cloud: 'kubernetes',label: 'mypod',namespace: 'jenkins',serviceAccou
                   passwordVariable: 'HARBOR_PASSWORD'
                   ]]) {
                     sh "docker login harbor.quark.com -u ${env.HARBOR_USER} -p ${env.HARBOR_PASSWORD}"
-                    sh (script: "docker build -t ${config.images.app} ${config.app.dockerfile}",returnStdout: true)
-                    sh (script: "docker push ${config.images.app}",returnStdout: true)
-                    sh (script: "docker rmi ${config.images.app}",returnStdout: true)
+                    // sh (script: "docker build -t ${config.images.app} ${config.app.dockerfile}",returnStdout: true)
+                    // sh (script: "docker push ${config.images.app}",returnStdout: true)
+                    // sh (script: "docker rmi ${config.images.app}",returnStdout: true)
                   }
               }
             }
