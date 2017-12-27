@@ -5,7 +5,7 @@ podTemplate(cloud: 'kubernetes',label: 'mypod',namespace: 'jenkins',serviceAccou
     containerTemplate(name: 'jnlp', image: 'harbor.quark.com/quark/jnlp-slave:alpine', workingDir: '/home/jenkins'),
     containerTemplate(name: 'maven', image: 'harbor.quark.com/quark/maven:3.5.0-8u74', ttyEnabled: true, command: 'cat'),
     containerTemplate(name: 'docker', image: 'harbor.quark.com/quark/docker:1.12.6', ttyEnabled: true, command: 'cat'),
-    containerTemplate(name: 'kubectl', image: 'harbor.quark.com/quark/kubectl:v1.8.4', ttyEnabled: true, command: 'cat')
+    containerTemplate(name: 'kubectl', image: 'harbor.quark.com/quark/k8s-kubectl:v1.8.4', ttyEnabled: true, command: 'cat')
     ],
     volumes : [
         [$class: 'HostPathVolume', mountPath: '/var/run/docker.sock', hostPath: '/var/run/docker.sock'],
