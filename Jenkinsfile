@@ -51,8 +51,8 @@ podTemplate(cloud: 'kubernetes',label: 'mypod',namespace: 'jenkins',serviceAccou
 
             stage('deploy to k8s') {
               container('kubectl') {
-                sh "kubectl delete -f app-deploy.yaml"
-                // sh "kubectl rollout status deployment/tomcat -n quark-dev"
+                // sh "kubectl delete -f app-deploy.yaml"
+                sh "kubectl rollout status deployment/tomcat -n quark-dev"
                 sh "kubectl get pods -n quark-dev -o wide"
                 sh "kubectl get rs -n quark-dev"
               }
