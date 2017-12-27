@@ -25,7 +25,7 @@ spec:
     spec:
       #hostNetwork: true
       containers:
-      - image: tomcat:8.0
+      - image: tomcat:latest
         name: tomcat
         ports:
         - containerPort: 8080
