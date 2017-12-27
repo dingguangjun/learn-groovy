@@ -51,8 +51,8 @@ podTemplate(cloud: 'kubernetes',label: 'mypod',namespace: 'jenkins',serviceAccou
 
             stage('deploy to k8s') {
               container('kubectl') {
-                sh "kubectl delete -f app-deploy.yaml"
-                sh "kubectl create -f app-deploy.yaml"
+                // sh "kubectl delete -f app-deploy.yaml"
+                // sh "kubectl create -f app-deploy.yaml"
                 sh "kubectl get pods -o wide"
               }
             }
