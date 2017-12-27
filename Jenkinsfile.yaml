@@ -5,23 +5,10 @@ images:
   app: "harbor.quark.com/quark/contract:v1"
 app:
   dockerfile: "./"
-  dockerhosts: "192.168.56.91"
-  containername: "contractmgt"
+  dockerhosts:
+  containername:
   # all other docker param specify here
-  dockeroptions: "\
-  -p 9001:8080 \
-  -e LOG_HOME=/opt/jarapp/logs \
-  -v /opt/logs/:/AppLogs \
-  -e LOG_HOME=/opt/tomcat/logs \
-  -e etcdClusterIp=172.30.33.31 \
-  -e appCfgs= \
-  -e JAVA_OPTS='\
-  -server \
-  -Xms128m \
-  -Xmx128m \
-  -Xss512k \
-  -XX:PermSize=512m \
-  -XX:MaxPermSize=768m'"
+  dockeroptions:
 git:
   gitrepo: "http://172.30.33.32/contract-mgt/ContractMgt.git"
   gitcredentialsid: "837658c2-68c1-41e5-9487-e3ee1a862187"
